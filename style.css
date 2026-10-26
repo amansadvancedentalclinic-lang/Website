@@ -1782,3 +1782,95 @@ footer {
         font-size: 22px;
     }
 }
+
+
+/* ========================================
+   SERVICE CARDS - INDIVIDUAL DENTAL IMAGES
+======================================== */
+
+.service-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #102238;
+    border: 1px solid rgba(255,255,255,0.16);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+/* Background image layer */
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    z-index: -2;
+    background-image: var(--service-image);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    transform: scale(1.04);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Black fade for readable text */
+.service-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(5, 14, 26, 0.88) 0%,
+        rgba(5, 14, 26, 0.72) 55%,
+        rgba(5, 14, 26, 0.52) 100%
+    );
+}
+
+/* Individual images for each service */
+.service-card:nth-child(1) {
+    --service-image: url("Images/Root\ Canal.jpg");
+}
+
+.service-card:nth-child(2) {
+    --service-image: url("Images/Dental\ Implant.jpg");
+}
+
+.service-card:nth-child(3) {
+    --service-image: url("Images/Smile\ Designing.jpg");
+}
+
+.service-card:nth-child(4) {
+    --service-image: url("Images/Teeth\ Whitening.jpg");
+}
+
+.service-card:nth-child(5) {
+    --service-image: url("Images/Braces\ &\ Aligners.jpg");
+}
+
+.service-card:nth-child(6) {
+    --service-image: url("Images/Crown\ &\ Bridges.jpg");
+}
+
+/* Keep card content above the image */
+.service-card > * {
+    position: relative;
+}
+
+/* Hover animation */
+.service-card:hover {
+    border-color: #b8914d;
+    transform: translateY(-5px);
+}
+
+.service-card:hover::before {
+    filter: blur(0);
+    transform: scale(1.09);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .service-card {
+        min-height: 230px;
+        padding: 26px;
+    }
+}
